@@ -1,0 +1,629 @@
+[
+  {
+    "file": "1 · Start and sign-in.png",
+    "width": 5250,
+    "height": 2226,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 105,
+        "y": 178,
+        "width": 341,
+        "height": 1869,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 578,
+        "y": 178,
+        "width": 338,
+        "height": 1869,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1043,
+        "y": 178,
+        "width": 345,
+        "height": 1869,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1519,
+        "y": 178,
+        "width": 335,
+        "height": 1869,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 2927,
+        "y": 178,
+        "width": 338,
+        "height": 1869,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 6,
+        "x": 3370,
+        "y": 178,
+        "width": 390,
+        "height": 1869,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "2 · Learn.png",
+    "width": 5720,
+    "height": 2366,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 100,
+        "y": 189,
+        "width": 347,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 572,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1040,
+        "y": 189,
+        "width": 347,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1512,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 1981,
+        "y": 189,
+        "width": 347,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 6,
+        "x": 2452,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 7,
+        "x": 2924,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 8,
+        "x": 3865,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 9,
+        "x": 4333,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 10,
+        "x": 4805,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 11,
+        "x": 5273,
+        "y": 189,
+        "width": 347,
+        "height": 1988,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "3 · Daily habit.png",
+    "width": 1490,
+    "height": 2366,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 100,
+        "y": 189,
+        "width": 346,
+        "height": 1987,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 577,
+        "y": 189,
+        "width": 337,
+        "height": 1987,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1043,
+        "y": 189,
+        "width": 344,
+        "height": 1987,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "4 · Save.png",
+    "width": 2900,
+    "height": 2366,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 103,
+        "y": 189,
+        "width": 343,
+        "height": 1987,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 584,
+        "y": 189,
+        "width": 324,
+        "height": 1987,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1048,
+        "y": 189,
+        "width": 330,
+        "height": 1987,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1965,
+        "y": 189,
+        "width": 381,
+        "height": 1987,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 2454,
+        "y": 189,
+        "width": 343,
+        "height": 1987,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "5 · Souq.png",
+    "width": 1700,
+    "height": 2366,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 80,
+        "y": 189,
+        "width": 391,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 574,
+        "y": 189,
+        "width": 342,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1047,
+        "y": 189,
+        "width": 339,
+        "height": 1988,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "6 · Me and Collection.png",
+    "width": 1700,
+    "height": 4173,
+    "boxes": []
+  },
+  {
+    "file": "7 · Parent starts and signs in.png",
+    "width": 7130,
+    "height": 2366,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 102,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 575,
+        "y": 189,
+        "width": 339,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1043,
+        "y": 189,
+        "width": 254,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1511,
+        "y": 189,
+        "width": 348,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 1983,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 6,
+        "x": 2451,
+        "y": 189,
+        "width": 348,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 7,
+        "x": 2923,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 8,
+        "x": 3868,
+        "y": 189,
+        "width": 334,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 9,
+        "x": 4336,
+        "y": 189,
+        "width": 339,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 10,
+        "x": 5272,
+        "y": 189,
+        "width": 348,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 11,
+        "x": 5744,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 12,
+        "x": 6216,
+        "y": 189,
+        "width": 339,
+        "height": 1988,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 13,
+        "x": 6684,
+        "y": 189,
+        "width": 343,
+        "height": 1988,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "8 · Parent links to a child.png",
+    "width": 4310,
+    "height": 2518,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 102,
+        "y": 201,
+        "width": 272,
+        "height": 2116,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 1018,
+        "y": 201,
+        "width": 391,
+        "height": 2116,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1514,
+        "y": 201,
+        "width": 342,
+        "height": 2116,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1985,
+        "y": 201,
+        "width": 339,
+        "height": 2116,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 2931,
+        "y": 201,
+        "width": 326,
+        "height": 2116,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "9 · Parent home.png",
+    "width": 5250,
+    "height": 2428,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 102,
+        "y": 194,
+        "width": 345,
+        "height": 2040,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 1043,
+        "y": 194,
+        "width": 341,
+        "height": 2040,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1982,
+        "y": 194,
+        "width": 345,
+        "height": 2040,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 2924,
+        "y": 194,
+        "width": 345,
+        "height": 2040,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 3869,
+        "y": 194,
+        "width": 335,
+        "height": 2040,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 6,
+        "x": 4338,
+        "y": 194,
+        "width": 331,
+        "height": 2040,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "10 · States and errors.png",
+    "width": 5720,
+    "height": 2226,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 104,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 576,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1044,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1516,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 1984,
+        "y": 178,
+        "width": 340,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 6,
+        "x": 2456,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 7,
+        "x": 2924,
+        "y": 178,
+        "width": 340,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 8,
+        "x": 3396,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 9,
+        "x": 5277,
+        "y": 178,
+        "width": 336,
+        "height": 1871,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "11 · Parent gate.png",
+    "width": 3860,
+    "height": 2388,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 82,
+        "y": 191,
+        "width": 381,
+        "height": 2006,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 2,
+        "x": 550,
+        "y": 191,
+        "width": 384,
+        "height": 2006,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 3,
+        "x": 1025,
+        "y": 191,
+        "width": 379,
+        "height": 2006,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 4,
+        "x": 1496,
+        "y": 191,
+        "width": 379,
+        "height": 2006,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 5,
+        "x": 1966,
+        "y": 191,
+        "width": 384,
+        "height": 2006,
+        "confidence": "heuristic"
+      },
+      {
+        "id": 6,
+        "x": 2437,
+        "y": 191,
+        "width": 381,
+        "height": 2006,
+        "confidence": "heuristic"
+      }
+    ]
+  },
+  {
+    "file": "Brand and anatomy.png",
+    "width": 1920,
+    "height": 4587,
+    "boxes": [
+      {
+        "id": 1,
+        "x": 120,
+        "y": 367,
+        "width": 1541,
+        "height": 3854,
+        "confidence": "heuristic"
+      }
+    ]
+  }
+]

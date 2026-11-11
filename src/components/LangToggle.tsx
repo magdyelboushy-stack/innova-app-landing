@@ -1,0 +1,2 @@
+import type{Locale}from'../i18n/copy'
+export function LangToggle({locale,onChange}:{locale:Locale;onChange:(locale:Locale)=>void}){return <div className="language-toggle" aria-label="Language"><button type="button" className="language-toggle__option" aria-pressed={locale==='en'} onClick={()=>onChange('en')}>EN</button><button type="button" className="language-toggle__option" aria-pressed={locale==='ar'} onClick={()=>onChange('ar')}>ع</button></div>}

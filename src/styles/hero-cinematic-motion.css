@@ -1,0 +1,39 @@
+/* Layered 60fps hero motion. Transform-only animation and CSS-only decorative geometry. */
+main.cinema .okto-motion-hero{perspective:1200px;isolation:isolate;overflow:clip}
+main.cinema .okto-motion-hero:before{background:#4295AF;border-radius:50% 0 0 50%}
+main.cinema .motion-hero__stage-entrance{position:relative;z-index:3;width:100%;min-width:0;transform-style:preserve-3d;align-self:center;justify-self:center}
+main.cinema .okto-motion-hero .hero-stage{width:min(100%,560px);transform-style:preserve-3d;will-change:transform}
+main.cinema .okto-motion-hero .hero-stage__phone{overflow:visible;transform:translateZ(40px);border:0;background:transparent;box-shadow:none}
+main.cinema .okto-motion-hero .hero-stage__phone:before{display:none}
+main.cinema .motion-hero__float-phone{position:relative;width:100%;height:100%;overflow:hidden;border:.36rem solid var(--ink);border-radius:2.2rem;background:var(--paper);box-shadow:1rem 1rem 0 var(--coral),0 1.8rem 3.5rem rgb(16 59 72/.22)}
+main.cinema .okto-motion-hero .hero-stage__okto{overflow:visible;filter:none;background:none;transform:translateZ(70px)}
+main.cinema .motion-hero__float-character{height:100%;width:100%;overflow:hidden;border-radius:46% 46% 42% 42%;background:var(--teal);filter:drop-shadow(.55rem .65rem 0 var(--ink))}
+main.cinema .okto-motion-hero .hero-stage__note{transform:translateZ(95px)}
+main.cinema .okto-motion-hero .hero-stage__coin{transform:translateZ(110px)}
+main.cinema .motion-hero__scroll-track{position:absolute;z-index:12;inset-inline:0;top:0;height:5px;background:rgb(18 66 76/.10);pointer-events:none}
+main.cinema .motion-hero__scroll-track span{display:block;height:100%;width:100%;background:var(--coral);transform-origin:left center}
+main.cinema[dir=rtl] .motion-hero__scroll-track span{transform-origin:right center}
+main.cinema .motion-hero__sunrays{position:absolute;z-index:0;pointer-events:none;right:-10%;top:-30%;height:145%;width:65%;opacity:.35;overflow:hidden;transform-style:preserve-3d}
+main.cinema .motion-hero__sunrays i{position:absolute;top:-15%;width:13%;height:125%;background:rgb(234 247 250/.35);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);transform:rotate(21deg)}
+main.cinema .motion-hero__sunrays i:nth-child(1){left:1%;width:9%}.motion-hero__sunrays i:nth-child(2){left:28%}.motion-hero__sunrays i:nth-child(3){left:56%;width:8%}.motion-hero__sunrays i:nth-child(4){left:87%;width:12%}
+main.cinema .motion-hero__bubbles{position:absolute;z-index:1;inset:0;pointer-events:none;overflow:hidden;will-change:transform}
+main.cinema .motion-hero__bubbles i{position:absolute;display:block;border:2px solid rgb(255 251 245/.58);border-radius:50%;background:rgb(255 251 245/.09);animation:motionBubbleFloat 5s ease-in-out infinite alternate;box-shadow:inset -2px -3px 0 rgb(255 251 245/.16)}
+@keyframes motionBubbleFloat{from{transform:translate3d(0,9px,0)}to{transform:translate3d(8px,-16px,0)}}
+main.cinema .motion-hero__dive{position:absolute;z-index:8;inset-inline-start:50%;bottom:1.1rem;transform:translateX(-50%);display:flex;align-items:center;gap:.8rem;font-size:.66rem;font-weight:800;letter-spacing:.12em;text-decoration:none;color:var(--ink)}
+main.cinema .motion-hero__dive span:last-child{display:grid;place-items:center;border:2px solid currentColor;width:1.8rem;height:1.8rem;border-radius:50%;font-size:1rem;animation:motionDiveBob 2.4s ease-in-out infinite}
+@keyframes motionDiveBob{50%{transform:translateY(5px)}}
+main.cinema .okto-motion-hero h1{font-weight:800;letter-spacing:-.06em}
+main.cinema[dir=rtl] .okto-motion-hero h1{letter-spacing:0;line-height:1.08;font-weight:800}
+main.cinema .okto-motion-hero .hero-cta{transform-origin:center;will-change:transform}
+main.cinema .okto-motion-hero .cinema-hero__copy{min-width:0;will-change:transform}
+main.cinema .okto-motion-hero .hero-stage__phone svg,main.cinema .okto-motion-hero .hero-stage__okto svg{width:100%;height:100%}
+@media(max-width:760px){main.cinema .okto-motion-hero{padding-bottom:3.6rem;perspective:none}main.cinema .motion-hero__stage-entrance{width:100%}main.cinema .okto-motion-hero .hero-stage{height:430px;min-height:430px;max-width:390px}main.cinema .okto-motion-hero .hero-stage__phone{right:2%;width:205px}main.cinema .okto-motion-hero .hero-stage__okto{left:0;width:190px}main.cinema .motion-hero__float-phone{border-width:.27rem;border-radius:1.7rem;box-shadow:.65rem .7rem 0 var(--coral)}main.cinema .motion-hero__sunrays{width:110%;right:-30%;top:28%;height:80%;opacity:.3}main.cinema .motion-hero__dive{bottom:.65rem;font-size:.55rem;white-space:nowrap}main.cinema .okto-motion-hero .cinema-hero__copy{z-index:5}}
+@media(hover:none),(pointer:coarse){main.cinema .okto-motion-hero .hero-stage{transform-style:flat}}
+@media(prefers-reduced-motion:reduce){main.cinema .motion-hero__bubbles i,main.cinema .motion-hero__dive span:last-child{animation:none!important}main.cinema .okto-motion-hero *{will-change:auto!important}}
+
+/* Keep mobile hero content naturally scrollable instead of clipping tall Arabic copy. */
+@media(max-width:760px){main.cinema .okto-motion-hero{height:auto;min-height:100svh;overflow:clip}}
+main.cinema[dir=rtl] .okto-motion-hero .cinema-hero__copy,main.cinema[dir=rtl] .okto-motion-hero .hero-stage__note{text-align:start}
+main.cinema[dir=rtl] .okto-motion-hero .hero-stage__phone{right:auto;left:8%}
+main.cinema[dir=rtl] .okto-motion-hero .hero-stage__okto{left:auto;right:0}
+@media(max-width:760px){main.cinema[dir=rtl] .okto-motion-hero .hero-stage__phone{left:2%}}

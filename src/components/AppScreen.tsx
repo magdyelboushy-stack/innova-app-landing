@@ -1,0 +1,3 @@
+import{useState}from'react'
+type Props={screen:string;title:string;className?:string}
+export function AppScreen({screen,title,className=''}:Props){const[missing,setMissing]=useState(true);return <div className={`app-screen ${className}`}><div className="app-screen__notch"/>{!missing&&<img src={`/screens/${screen}`} alt={title} onError={()=>setMissing(true)}/>}<div className="app-screen__placeholder" hidden={!missing}><span>OKTO APP SCREEN</span><strong>{title}</strong><i/><b>Drop <code>public/screens/{screen}</code> here</b></div><img className="app-screen__probe" src={`/screens/${screen}`} alt="" onLoad={()=>setMissing(false)} onError={()=>setMissing(true)}/></div>}

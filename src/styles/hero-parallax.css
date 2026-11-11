@@ -1,0 +1,18 @@
+/* Composited Motion parallax layers. Mouse movement disabled for touch and reduced motion. */
+.hero-v2__stage{transform-style:preserve-3d;will-change:transform}
+.hero-v2__floor-motion{position:absolute;inset-inline:0;inset-block-end:0;width:100%;height:min(18vw,230px);z-index:-1;pointer-events:none}
+.hero-v2__floor-motion .hero-v2__seafloor{inset-block-end:0;height:100%;}
+.hero-v2__moving-coin{position:absolute;inset:0;pointer-events:none;z-index:7}
+.hero-v2__moving-coin .hero-v2__coin{position:absolute}
+.hero-v2__headline,.hero-v2__logo,.hero-v2__float-card b,.hero-v2__coin{font-family:var(--font-display);font-weight:800}
+.hero-v2__headline{font-synthesis:none}
+.hero-v2__button{transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease}
+.hero-v2__button:hover{transform:translateY(-4px);box-shadow:0 8px 0 #103b4822}
+.hero-v2__button:active{transform:translateY(2px)}
+@media(max-width:800px){.hero-v2__stage{transform-style:flat;will-change:auto}.hero-v2__floor-motion{height:140px}}
+@media(max-width:480px){.hero-v2__floor-motion{height:100px}}
+@media(prefers-reduced-motion:reduce){.hero-v2__stage{will-change:auto}.hero-v2__button{transition:none}}
+
+/* The brand display face is always Baloo Bhaijaan 2 ExtraBold. */
+h1,h2,h3,.hero-v2__logo,.chapter__number,.hero-v2__chapter-index{font-family:var(--font-display);font-weight:800}
+:lang(ar) h1,:lang(ar) h2,:lang(ar) h3{font-family:var(--font-display);font-weight:800}
