@@ -1,5 +1,10 @@
 import { animate, motion, useInView, useMotionValue, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
-import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
+import { ArrowDown, ArrowRight, Sparkles } from 'lucide-react'
+import { gsap } from 'gsap'
+import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
+import { LearnExperience } from './LearnExperience'
+import { HabitExperience } from './HabitExperience'
+import { IPhoneFrame } from './IPhoneFrame'
 
 const scenes = { en: [['LEARN', 'Follow the money.', 'Watch one coin travel through a real story.'], ['HABIT', 'Three minutes, every day.', 'A little streak becomes a bigger confidence.'], ['SAVE', 'Feel the goal get closer.', 'Every coin has a job.'], ['SOUQ', 'Spend or save?', 'Your choice changes what happens next.'], ['PARENTS', 'Clear. Calm. In control.', 'Progress for kids. Peace of mind for parents.']], ar: [['اكتشف', 'الفلوس بتروح فين؟', 'امشي مع عملة واحدة في حكاية من الحياة بجد.'], ['عادات', '3 دقايق كل يوم.', 'خطوة صغيرة بتعمل ثقة كبيرة.'], ['تحويش', 'حس إن هدفك بيقرب.', 'كل عملة ليها شغلة.'], ['السوق', 'تصرف ولا تحوّش؟', 'إنت اللي بتختار إيه يحصل بعد كده.'], ['للكبار', 'مغامرته. وراحة بالك.', 'تابع التقدّم وسيبه يكتشف.']] }
 
@@ -47,6 +52,7 @@ function CountUp({ to }: { to: number }) {
 
 export function CinematicLanding() {
   const ref = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLElement>(null)
   const [lang, setLang] = useState<'en' | 'ar'>('en')
   const copy = heroCopy[lang]
   const selectedScenes = scenes[lang]
@@ -75,6 +81,21 @@ export function CinematicLanding() {
   }
   const onLeave = () => { mx.set(0); my.set(0) }
 
+  // A single, scoped timeline keeps the opening calm and intentional: copy arrives
+  // first, then the tactile stage settles into place. It is reverted on unmount.
+  useLayoutEffect(() => {
+    if (reducedMotion || !heroRef.current) return
+    const context = gsap.context(() => {
+      const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
+      timeline
+        .fromTo('.hero-nav', { y: -18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .55 })
+        .fromTo('.cinema-hero__copy > p, .cinema-hero__copy > h1, .cinema-hero__copy > span, .cinema-hero__copy > div, .cinema-hero__copy > small', { y: 22, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .66, stagger: .09 }, '-=.2')
+        .fromTo('.hero-stage', { y: 28, scale: .92, rotate: 3, autoAlpha: 0 }, { y: 0, scale: 1, rotate: 0, autoAlpha: 1, duration: 1.05, ease: 'elastic.out(1, .72)' }, '-=.62')
+      gsap.to('.hero-orbit--two', { rotate: 360, duration: 28, repeat: -1, ease: 'none' })
+    }, heroRef)
+    return () => context.revert()
+  }, [reducedMotion])
+
   // Coin that dives down the page and spins as you scroll.
   const trackerTop = useTransform(page, [0, 1], ['14%', '80%'])
   const trackerSpin = useTransform(page, [0, 1], [0, 1800])
@@ -83,7 +104,7 @@ export function CinematicLanding() {
     <motion.div className="scroll-progress" style={{ scaleX: page }} aria-hidden="true" />
     <motion.div className="coin-tracker" style={{ top: trackerTop, rotateY: trackerSpin }} aria-hidden="true"><img src="/icon.svg" alt="" /></motion.div>
 
-    <section className="cinema-hero cinema-hero--lesson" onPointerMove={onMove} onPointerLeave={onLeave}>
+    <section ref={heroRef} id="top" className="cinema-hero cinema-hero--lesson" onPointerMove={onMove} onPointerLeave={onLeave}>
       <nav className="hero-nav" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main navigation'}>
         <strong>okto<span>•</span></strong>
         <div><a href="#learn">{copy.kids}</a><a href="#parents">{copy.parents}</a></div>
@@ -91,15 +112,15 @@ export function CinematicLanding() {
       </nav>
       <div className="hero-orbit hero-orbit--one" />
       <div className="hero-orbit hero-orbit--two" />
-      <div className="hero-spark hero-spark--one">✦</div>
-      <div className="hero-spark hero-spark--two">✦</div>
+      <Sparkles className="hero-spark hero-spark--one" aria-hidden="true" />
+      <Sparkles className="hero-spark hero-spark--two" aria-hidden="true" />
       <motion.div className="cinema-hero__copy" initial={reducedMotion ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, ease }}>
         <p>{copy.eyebrow}</p>
         <h1><span className="mask"><motion.span initial={reducedMotion ? false : { y: '115%', rotate: 4 }} animate={{ y: 0, rotate: 0 }} transition={{ duration: .9, delay: .08, ease }}>{copy.lineOne}</motion.span></span><span className="mask"><motion.em initial={reducedMotion ? false : { y: '115%', rotate: 4 }} animate={{ y: 0, rotate: 0 }} transition={{ duration: .9, delay: .2, ease }}>{copy.lineTwo}</motion.em></span></h1>
         <motion.span initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .45, ease }}>{copy.body}</motion.span>
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .6, ease }}>
-          <Magnetic><a className="hero-cta hero-cta--primary" href="#learn">{copy.primary} <b aria-hidden="true">↓</b></a></Magnetic>
-          <Magnetic><a className="hero-cta hero-cta--secondary" href="#arms">{copy.secondary}</a></Magnetic>
+          <Magnetic><a className="hero-cta hero-cta--primary" href="#learn">{copy.primary} <ArrowDown size={16} strokeWidth={2.8} aria-hidden="true" /></a></Magnetic>
+          <Magnetic><a className="hero-cta hero-cta--secondary" href="#arms">{copy.secondary} <ArrowRight size={16} strokeWidth={2.8} aria-hidden="true" /></a></Magnetic>
         </motion.div>
         <motion.small initial={reducedMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .9 }}><i /> {copy.trust}</motion.small>
       </motion.div>
@@ -108,8 +129,8 @@ export function CinematicLanding() {
         <motion.div className="hero-stage__glow" style={{ left: glowX, top: glowY }} />
         <div className="hero-stage__orbit" />
         <motion.div className="hero-stage__layer" style={{ x: phoneX }}>
-          <motion.div className="hero-stage__phone" animate={reducedMotion ? undefined : { y: [0, -14, 0], rotate: [8, 10, 8] }} transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}>
-            <Crop src={asset.learn} x={80} y={234} w={390} h={844} width={5720} height={2366} label="Okto Follow the Money lesson" />
+          <motion.div animate={reducedMotion ? undefined : { y: [0, -14, 0], rotate: [8, 10, 8] }} transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}>
+            <IPhoneFrame className="hero-stage__phone hero-iphone" screenshot={asset.learn} viewBox="80 234 390 844" imageWidth={5720} imageHeight={2366} label="Okto Follow the Money lesson" />
           </motion.div>
         </motion.div>
         <motion.div className="hero-stage__layer" style={{ x: oktoX, y: oktoY }}>
@@ -127,9 +148,10 @@ export function CinematicLanding() {
     </section>
 
     <Marquee items={selectedSkills.map(s => s[0])} />
-    <Scene id="learn" index={0} eyebrow={selectedScenes[0][0]} title={selectedScenes[0][1]} body={selectedScenes[0][2]} />
+    <LearnExperience lang={lang} />
     <ArmsChapter copy={copy} skills={selectedSkills} />
-    {selectedScenes.slice(1).map(([eyebrow, title, body], index) => <Scene id={index === selectedScenes.length - 2 ? 'parents' : undefined} key={title} index={index + 1} eyebrow={eyebrow} title={title} body={body} />)}
+    <HabitExperience lang={lang} />
+    {selectedScenes.slice(2).map(([eyebrow, title, body], index) => <Scene id={eyebrow === selectedScenes[selectedScenes.length - 1][0] ? 'parents' : undefined} key={title} index={index + 2} eyebrow={eyebrow} title={title} body={body} />)}
     <FinalCta copy={copy} />
   </main>
 }

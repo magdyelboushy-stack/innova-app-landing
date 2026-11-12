@@ -1,0 +1,45 @@
+.iphone-frame{position:relative;width:min(100%,332px);margin:0;filter:drop-shadow(1rem 1.3rem 1.4rem rgb(18 66 76/.28));transform:rotate(4deg);transform-style:preserve-3d}.iphone-frame__shell{position:relative;padding:.48rem;border:3px solid #1c262b;border-radius:2.75rem;background:linear-gradient(112deg,#5f6d75,#1f282d 16%,#11181c 49%,#607079 83%,#192126);box-shadow:inset 1px 1px 1px rgb(255 255 255/.45),inset -1px -1px 2px rgb(0 0 0/.85),.16rem .2rem 0 #101518}.iphone-frame__screen{position:relative;overflow:hidden;aspect-ratio:390/844;border:2px solid #0b1013;border-radius:2.28rem;background:#f7f7f7}.iphone-frame__screen svg{display:block;width:100%;height:100%}.iphone-frame__island{position:absolute;z-index:3;top:1.05rem;left:50%;display:block;width:30%;height:.85rem;translate:-50%;border-radius:99px;background:#050708;box-shadow:inset 0 1px 1px rgb(255 255 255/.08)}.iphone-frame__island i{position:absolute;right:.32rem;top:50%;width:.3rem;aspect-ratio:1;translate:0 -50%;border-radius:50%;background:#182b3b;box-shadow:0 0 .15rem #5da0c6}.iphone-frame__reflection{position:absolute;z-index:2;left:10%;top:8%;width:13%;height:72%;border-left:2px solid rgb(255 255 255/.3);border-radius:50%;transform:rotate(16deg);pointer-events:none}.iphone-frame__side{position:absolute;display:block;width:.17rem;border-radius:.4rem;background:linear-gradient(90deg,#12191d,#718089,#1b2429);box-shadow:inset 1px 0 0 rgb(255 255 255/.28)}.iphone-frame__side--volume{left:-.2rem;top:22%;height:3.1rem}.iphone-frame__side--action{right:-.2rem;top:29%;height:4.25rem}@media(max-width:760px){.iphone-frame{width:min(82vw,335px);filter:drop-shadow(.65rem .8rem 1rem rgb(18 66 76/.25))}}
+
+/* Hero uses the same shell without the old illustrated phone border. */
+main.cinema .iphone-frame.hero-iphone{overflow:visible;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;filter:drop-shadow(.9rem 1.1rem 1.25rem rgb(16 59 72/.3));transform:none}main.cinema .hero-iphone:before{display:none}main.cinema .hero-iphone .iphone-frame__shell{padding:.4rem;border-radius:2.45rem}main.cinema .hero-iphone .iphone-frame__screen{border-radius:2rem}main.cinema .hero-iphone .iphone-frame__island{top:.87rem;height:.7rem}@media(max-width:760px){main.cinema .iphone-frame.hero-iphone{width:100%}main.cinema .hero-iphone .iphone-frame__shell{border-radius:1.9rem}main.cinema .hero-iphone .iphone-frame__screen{border-radius:1.55rem}}
+/* iPhone 17 frame. كل الأحجام بـ cqw (نسبة من عرض الموبايل) فالشكل بيتسكيل صح في أي حجم.
+   بدّل بيه كل قواعد .iphone-frame القديمة (والـ hero overrides اللي تحت). */
+/* iPhone 17 frame. كل الأحجام بـ cqw (نسبة من عرض الموبايل) فالشكل بيتسكيل صح في أي حجم.
+   بدّل بيه كل قواعد .iphone-frame القديمة (والـ hero overrides اللي تحت). */
+.iphone-frame{--edge-a:#4b535a;--edge-b:#15191c;--edge-c:#6b747b;--btn:#2a3136;position:relative;box-sizing:border-box;container-type:inline-size;width:min(100%,332px);margin:0;filter:drop-shadow(1rem 1.3rem 1.4rem rgb(18 66 76/.28));transform:rotate(4deg);transform-style:preserve-3d}
+.iphone-frame--white{--edge-a:#f4f3ef;--edge-b:#c9c8c3;--edge-c:#fbfaf7;--btn:#d8d7d2}
+.iphone-frame--mist{--edge-a:#c3d3df;--edge-b:#8da3b5;--edge-c:#d6e3ec;--btn:#9db1c1}
+.iphone-frame--sage{--edge-a:#b9c8b1;--edge-b:#819978;--edge-c:#cddbc5;--btn:#90a487}
+.iphone-frame--lavender{--edge-a:#d3c8e3;--edge-b:#a597bd;--edge-c:#e3dbef;--btn:#b3a6c8}
+.iphone-frame--red{--edge-a:#8a2f40;--edge-b:#4a1520;--edge-c:#b4566a;--btn:#6a2030}
+
+/* flat aluminium band */
+.iphone-frame__shell{position:relative;box-sizing:border-box;padding:.85cqw;border-radius:17cqw;background:linear-gradient(115deg,var(--edge-c),var(--edge-a) 14%,var(--edge-b) 52%,var(--edge-a) 86%,var(--edge-c));box-shadow:inset 0 0 0 .3cqw rgb(255 255 255/.28),inset 0 0 0 .55cqw rgb(0 0 0/.22),0 0 0 .2cqw rgb(0 0 0/.35)}
+
+/* thin, even black bezel = the border of the screen */
+.iphone-frame__screen{position:relative;box-sizing:border-box;overflow:hidden;aspect-ratio:402/874;border:1.35cqw solid #020304;border-radius:16.2cqw;background:#050708}
+.iphone-frame__screen svg{display:block;width:100%;height:100%}
+
+/* Dynamic Island */
+.iphone-frame__island{position:absolute;z-index:3;top:4.7cqw;left:50%;display:block;width:30.5%;height:9cqw;translate:-50%;border-radius:99px;background:#010203}
+.iphone-frame__island i{position:absolute;right:11%;top:50%;width:21%;aspect-ratio:1;translate:0 -50%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b4a63,#0a121a 60%);box-shadow:0 0 0 .3cqw #05080a}
+
+/* soft glass sheen, clipped to the screen shape */
+.iphone-frame__reflection{position:absolute;z-index:2;inset:.85cqw;border-radius:16.9cqw;background:linear-gradient(115deg,rgb(255 255 255/.16) 0,rgb(255 255 255/.05) 22%,transparent 38%);pointer-events:none}
+
+/* side buttons */
+.iphone-frame__side{position:absolute;display:block;width:.9cqw;background:linear-gradient(90deg,var(--btn),var(--edge-c) 55%,var(--btn));box-shadow:inset 0 0 0 .15cqw rgb(0 0 0/.25)}
+.iphone-frame__side--action,.iphone-frame__side--volume-up,.iphone-frame__side--volume-down{left:-.6cqw;border-radius:.8cqw 0 0 .8cqw}
+.iphone-frame__side--power,.iphone-frame__side--camera{right:-.6cqw;border-radius:0 .8cqw .8cqw 0}
+.iphone-frame__side--action{top:15%;height:3.4%}
+.iphone-frame__side--volume-up{top:21.5%;height:6.2%}
+.iphone-frame__side--volume-down{top:29.5%;height:6.2%}
+.iphone-frame__side--power{top:26%;height:10%}
+.iphone-frame__side--camera{top:62%;height:6.6%;width:.7cqw;background:linear-gradient(90deg,#0d1114,var(--btn))}
+
+@media(max-width:760px){.iphone-frame{width:min(82vw,335px);filter:drop-shadow(.65rem .8rem 1rem rgb(18 66 76/.25))}}
+
+/* Hero: نفس الإطار بس من غير دوران. (مفيش overrides للـ radius تاني، لأنه بيتسكيل لوحده) */
+main.cinema .iphone-frame.hero-iphone{overflow:visible;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;filter:drop-shadow(.9rem 1.1rem 1.25rem rgb(16 59 72/.3));transform:none}
+main.cinema .hero-iphone:before{display:none}
+@media(max-width:760px){main.cinema .iphone-frame.hero-iphone{width:100%}}
