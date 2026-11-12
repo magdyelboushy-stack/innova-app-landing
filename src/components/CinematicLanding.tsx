@@ -5,8 +5,10 @@ import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent, type R
 import { LearnExperience } from './LearnExperience'
 import { HabitExperience } from './HabitExperience'
 import { IPhoneFrame } from './IPhoneFrame'
-
-const scenes = { en: [['LEARN', 'Follow the money.', 'Watch one coin travel through a real story.'], ['HABIT', 'Three minutes, every day.', 'A little streak becomes a bigger confidence.'], ['SAVE', 'Feel the goal get closer.', 'Every coin has a job.'], ['SOUQ', 'Spend or save?', 'Your choice changes what happens next.'], ['PARENTS', 'Clear. Calm. In control.', 'Progress for kids. Peace of mind for parents.']], ar: [['اكتشف', 'الفلوس بتروح فين؟', 'امشي مع عملة واحدة في حكاية من الحياة بجد.'], ['عادات', '3 دقايق كل يوم.', 'خطوة صغيرة بتعمل ثقة كبيرة.'], ['تحويش', 'حس إن هدفك بيقرب.', 'كل عملة ليها شغلة.'], ['السوق', 'تصرف ولا تحوّش؟', 'إنت اللي بتختار إيه يحصل بعد كده.'], ['للكبار', 'مغامرته. وراحة بالك.', 'تابع التقدّم وسيبه يكتشف.']] }
+import { AppStorySection } from './AppStorySection'
+import { SeaDecor } from './SeaDecor'
+import { Okto3D } from './Okto3D'
+import './sea-okto.css'
 
 const moneySkills = { en: [['Earning', 'Learn money comes from work.'], ['Saving', 'Wait now, get more later.'], ['Spending smart', 'Needs first, wants second.'], ['Budgeting', 'Give every coin a job.'], ['Investing', 'Let money grow slowly.'], ['Entrepreneurship', 'Turn an idea into income.']], ar: [['الكسب', 'الفلوس بتيجي من الشغل.'], ['التحويش', 'استنى دلوقتي وخد أكتر بعدين.'], ['الصرف بذكاء', 'الأساسيات الأول والرغبات بعدين.'], ['الميزانية', 'كل عملة ليها شغلة.'], ['الاستثمار', 'خلّي فلوسك تكبر بالراحة.'], ['ريادة الأعمال', 'حوّل فكرتك لدخل.']] }
 
@@ -55,7 +57,6 @@ export function CinematicLanding() {
   const heroRef = useRef<HTMLElement>(null)
   const [lang, setLang] = useState<'en' | 'ar'>('en')
   const copy = heroCopy[lang]
-  const selectedScenes = scenes[lang]
   const selectedSkills = moneySkills[lang]
   const reducedMotion = useReducedMotion()
 
@@ -103,6 +104,7 @@ export function CinematicLanding() {
   return <main ref={ref} className="cinema" dir={lang === 'ar' ? 'rtl' : 'ltr'} lang={lang}>
     <motion.div className="scroll-progress" style={{ scaleX: page }} aria-hidden="true" />
     <motion.div className="coin-tracker" style={{ top: trackerTop, rotateY: trackerSpin }} aria-hidden="true"><img src="/icon.svg" alt="" /></motion.div>
+    <Okto3D lang={lang} />
 
     <section ref={heroRef} id="top" className="cinema-hero cinema-hero--lesson" onPointerMove={onMove} onPointerLeave={onLeave}>
       <nav className="hero-nav" aria-label={lang === 'ar' ? 'التنقل الرئيسي' : 'Main navigation'}>
@@ -151,7 +153,9 @@ export function CinematicLanding() {
     <LearnExperience lang={lang} />
     <ArmsChapter copy={copy} skills={selectedSkills} />
     <HabitExperience lang={lang} />
-    {selectedScenes.slice(2).map(([eyebrow, title, body], index) => <Scene id={eyebrow === selectedScenes[selectedScenes.length - 1][0] ? 'parents' : undefined} key={title} index={index + 2} eyebrow={eyebrow} title={title} body={body} />)}
+    <AppStorySection kind="save" lang={lang} />
+    <AppStorySection kind="souq" lang={lang} />
+    <AppStorySection kind="parents" lang={lang} />
     <FinalCta copy={copy} />
   </main>
 }
@@ -189,25 +193,9 @@ function SkillGlyph({ index }: { index: number }) {
   return <svg className="arms-html__glyph" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[index]}</svg>
 }
 
-function Scene({ id, index, eyebrow, title, body }: { id?: string; index: number; eyebrow: string; title: string; body: string }) {
-  const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const p = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: .4 })
-  const dir = index % 2 ? -1 : 1
-  const x = useTransform(p, [0, .5, 1], [150 * dir, 0, -150 * dir])
-  const r = useTransform(p, [0, 1], [-10, 10])
-  const s = useTransform(p, [0, .5, 1], [.75, 1, .85])
-  const dotY = useTransform(p, [0, 1], [60, -60])
-  return <section id={id} ref={ref} className={`cinema-scene cinema-scene--${index}`}>
-    <motion.div className="cinema-scene__object" style={{ x, rotate: r, scale: s }}><span>{index + 1}</span><motion.i style={{ y: dotY }} /></motion.div>
-    <motion.div className="cinema-scene__copy" initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }} whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }} viewport={{ amount: .5, once: true }} transition={{ duration: .8, ease }}>
-      <p>{eyebrow}</p><h2>{title}</h2><b>{body}</b>
-    </motion.div>
-  </section>
-}
-
 function FinalCta({ copy }: { copy: (typeof heroCopy)[keyof typeof heroCopy] }) {
   return <footer className="final-cta" id="get-the-app">
+    <SeaDecor tone="dark" places={['tl', 'tr', 'bl', 'br']} bubbles={14} />
     <motion.div className="final-cta__inner" initial={{ opacity: 0, y: 60, scale: .94 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: .4 }} transition={{ duration: .9, ease }}>
       <h2>{copy.ctaTitle}</h2>
       <p>{copy.ctaBody}</p>

@@ -1,11 +1,10 @@
-import { BriefcaseBusiness, Coins, ReceiptText, ShoppingBag } from 'lucide-react'
+import { ArrowRight, BriefcaseBusiness, Check, Coins, ReceiptText, ShoppingBag, Sparkles } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'motion/react'
 import TechText from './TechText'
-import { IPhoneFrame } from './IPhoneFrame'
-import learnScreen from '../../design-refs/2 · Learn.png'
+import { SeaDecor } from './SeaDecor'
 
 type Language = 'en' | 'ar'
 
@@ -56,7 +55,6 @@ export function LearnExperience({ lang }: { lang: Language }) {
   const StageIcon = stage.icon
   const t = copy[lang]
   const align = lang === 'ar' ? 'right' : 'left'
-  const screenViewBox = lang === 'ar' ? '80 1419 390 844' : '80 235 390 844'
 
   // One scroll story:
   // desktop -> the section is PINNED. Text grows, then EARN -> PLAN -> SAVE -> SPEND,
@@ -133,7 +131,7 @@ export function LearnExperience({ lang }: { lang: Language }) {
   useLayoutEffect(() => {
     if (reducedMotion || !sectionRef.current) return
     const context = gsap.context(() => {
-      gsap.fromTo('.learn-iphone', { autoAlpha: 0, y: 12, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.42, ease: 'power3.out' })
+      gsap.fromTo('.learn-device__stage', { autoAlpha: 0, y: 12, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.42, ease: 'power3.out' })
       gsap.fromTo('.learn-coin', { rotateY: -120, scale: 0.7 }, { rotateY: 0, scale: 1, duration: 0.55, ease: 'back.out(1.8)' })
     }, sectionRef)
     return () => context.revert()
@@ -141,21 +139,75 @@ export function LearnExperience({ lang }: { lang: Language }) {
 
   return <section ref={sectionRef} id="learn" className="learn-experience" aria-labelledby="learn-title">
     <div className="learn-experience__halo" aria-hidden="true" />
+    <SeaDecor tone="dark" places={['bl', 'tr']} />
     <div className="learn-experience__intro">
-      <div className="learn-experience__reveal">
-        {lang === 'ar' ? <div className="learn-arabic-copy">
-          <p>{t.eyebrow}</p>
-          <h2 id="learn-title"><span>{t.title[0]}</span><em>{t.title[1]}</em></h2>
-          <b>{t.lead}</b>
-        </div> : <>
-          {/* Real text for screen readers / SEO, because TechText is drawn on a canvas */}
-          <div className="sr-only"><p>{t.eyebrow}</p><h2 id="learn-title">{t.title.join(' ')}</h2><p>{t.lead}</p></div>
-          <div aria-hidden="true">
-            <div className="learn-tech learn-tech--eyebrow"><TechText key={`eyebrow-${lang}`} text={t.eyebrow} fontSize={44} fontWeight={800} reveal="letter" intro="none" color="#d6fe51" accentColor="#d6fe51" letterSpacing={0.1} align={align} guides={false} labels={false} selection={false} draggable={false} sweep={false} /></div>
-            {t.title.map((line) => <div className="learn-tech learn-tech--title" key={`${lang}-${line}`}><TechText text={line} fontSize={110} fontWeight={800} reveal="letter" intro="none" color="currentColor" accentColor="#d6fe51" letterSpacing={-0.05} align={align} guides={false} labels={false} clickKick draggable sweep /></div>)}
-            <div className="learn-tech learn-tech--lead"><TechText key={`lead-${lang}`} text={t.lead} fontSize={34} fontWeight={700} reveal="letter" intro="none" color="currentColor" accentColor="#d6fe51" align={align} guides={false} labels={false} selection={false} draggable={false} sweep={false} /></div>
+      {/* Real text for screen readers / SEO, because TechText is drawn on a canvas */}
+      <div className="sr-only">
+        <p>{t.eyebrow}</p>
+        <h2 id="learn-title">{t.title.join(' ')}</h2>
+        <p>{t.lead}</p>
+      </div>
+
+      <div className="learn-experience__reveal" aria-hidden="true">
+        <div className="learn-tech learn-tech--eyebrow">
+          <TechText
+            key={`eyebrow-${lang}`}
+            text={t.eyebrow}
+            fontSize={44}
+            fontWeight={800}
+            reveal="letter"
+            intro="none"
+            color="#d6fe51"
+            accentColor="#d6fe51"
+            letterSpacing={0.1}
+            align={align}
+            guides={false}
+            labels={false}
+            selection={false}
+            draggable={false}
+            sweep={false}
+          />
+        </div>
+
+        {t.title.map((line) => (
+          <div className="learn-tech learn-tech--title" key={`${lang}-${line}`}>
+            <TechText
+              text={line}
+              fontSize={110}
+              fontWeight={800}
+              reveal="letter"
+              intro="none"
+              color="currentColor"
+              accentColor="#d6fe51"
+              letterSpacing={-0.05}
+              align={align}
+              guides={false}
+              labels={false}
+              clickKick
+              draggable
+              sweep
+            />
           </div>
-        </>}
+        ))}
+
+        <div className="learn-tech learn-tech--lead">
+          <TechText
+            key={`lead-${lang}`}
+            text={t.lead}
+            fontSize={34}
+            fontWeight={700}
+            reveal="letter"
+            intro="none"
+            color="currentColor"
+            accentColor="#d6fe51"
+            align={align}
+            guides={false}
+            labels={false}
+            selection={false}
+            draggable={false}
+            sweep={false}
+          />
+        </div>
       </div>
 
       <div className="learn-timeline" aria-label={lang === 'en' ? 'Money journey stages' : 'مراحل رحلة الفلوس'}>
@@ -169,10 +221,22 @@ export function LearnExperience({ lang }: { lang: Language }) {
       </div>
     </div>
 
-    <div className="learn-device learn-device--screen" aria-live="polite">
-      <IPhoneFrame className="learn-iphone" screenshot={learnScreen} viewBox={screenViewBox} imageWidth={5720} imageHeight={2366} label={lang === 'en' ? 'Okto Learn app screen' : 'شاشة تعلّم أوكتو'} />
-      <div className="learn-screen-status"><StageIcon size={16} /><span>{stage.label}</span><b>{active + 1} / {steps.length}</b></div>
+    <div className="learn-device" aria-live="polite">
+      <div className="learn-device__frame">
+        <header><span className="learn-device__camera" /><b>OKTO / MY MONEY</b><i><span /><span /><span /></i></header>
+        <div className="learn-device__stage">
+          <div className="learn-stage-card">
+            <span className="learn-stage-card__icon"><StageIcon size={24} strokeWidth={2.45} /></span>
+            <div><small>{stage.label}</small><strong>{stage.title}</strong><p>{stage.note}</p></div>
+            <em>{stage.amount}</em>
+          </div>
+          <div className="learn-route" aria-hidden="true"><span className="is-done"><Check size={13} /></span><i /><span className={active > 0 ? 'is-done' : ''}>{active > 0 && <Check size={13} />}</span><i /><span className={active > 1 ? 'is-done' : ''}>{active > 1 && <Check size={13} />}</span><i /><span className={active > 2 ? 'is-done' : ''}>{active > 2 && <Check size={13} />}</span></div>
+          <div className="learn-device__balance"><span>{lang === 'en' ? 'MY COINS' : 'عملاتي'}</span><b>{20 - [0, 0, 5, 15][active]}</b><small>◉</small></div>
+          <div className="learn-device__tip"><Sparkles size={15} /><span>{lang === 'en' ? 'Every coin gets a job.' : 'كل عملة ليها شغلة.'}</span><ArrowRight size={16} /></div>
+        </div>
+      </div>
       <div className="learn-coin" aria-hidden="true"><Coins size={31} strokeWidth={2.4} /><i /></div>
+      <div className="learn-device__reflection" aria-hidden="true" />
     </div>
   </section>
 }
